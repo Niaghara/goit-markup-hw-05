@@ -11,7 +11,7 @@
 *::after {
   box-sizing: border-box;
   box-sizing: inherit;
-} */
+}  */
 
 
 :root {
@@ -28,6 +28,8 @@
   --background-color-hero: #c4c4c4;
   --border-color: #eeeeee;
   --border-color-header: #ececec;
+  --overlay-bacground-color: rgba(47, 48, 58, 0.8);
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --indent: 30px;
   --items: 3;
 }
@@ -157,6 +159,21 @@ img {
 }
 .icon-contacts-header {
   fill: var(--primary-text-color);
+}
+.nav-name {
+  position: relative;
+}
+
+.current::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: 0;
+  background: #2196F3;
+  border-radius: 2px;;
+
 }
 
 .nav-contacts-list {
@@ -314,6 +331,30 @@ advantages-card:nth-child(4n) {
 
 .section-works {
   padding-bottom: 109px;
+}
+
+.works-item {
+  position: relative;
+}
+.works-overlay {
+position: absolute;
+bottom: 0;
+width: 100%;
+padding-top: 27px;
+padding-bottom: 27px;
+background-color: var(--overlay-bacground-color);
+backdrop-filter: blur (2px);
+}
+
+.works-overlay-text {
+font-weight: 700;
+font-size: 14px;
+line-height: 1.14px;
+text-align: center;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+
+color: var(--primary-white-color);
 }
 
 /* Team */
@@ -529,7 +570,7 @@ advantages-card:nth-child(4n) {
 
 .project-card-wraper {
   padding: 20px 24px;
-  width: 322px;
+  min-width: 322px;
   border: 1px solid var(--border-color);
   border-top: none;
   border-radius: 4px;
@@ -563,7 +604,7 @@ advantages-card:nth-child(4n) {
 
 .project-card {
   background: var(--primary-white-color);
-  width: 370px;
+  min-width: 370px;
 }
 
 .project-card:nth-child(3n) {
@@ -573,8 +614,33 @@ advantages-card:nth-child(4n) {
   text-decoration: none;
 }
 
-.project-card:hover,
-.project-card:focus {
+.project-overlay  {
+  position: relative;
+  overflow: hidden;
+}
+.project-overlay-text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--primary-white-color);
+
+  padding: 63px 24px;
+  
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+  transition: transform  250ms var(--timing-function);
+  }
+
+.project-card:hover .project-overlay-text,
+.project-card:focus .project-overlay-text {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-decoration: none;
+  transform: translateY(0);
 }
